@@ -3,7 +3,7 @@
 namespace NetUtils.ManagedResult;
 
 [DebuggerStepThrough]
-public abstract record ManagedResult(bool Success, List<string> Issues, object ResultObject)
+public abstract record ManagedResult(bool Success, List<string> Issues, object? ResultObject)
 {
     public bool Fail => !Success;
     public string IssuesTextAggregate => string.Join("\n", Issues);
