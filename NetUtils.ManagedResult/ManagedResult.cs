@@ -3,11 +3,15 @@
 namespace NetUtils.ManagedResult;
 
 [DebuggerStepThrough]
-public record ManagedResult<T>(bool Success, List<string> Issues, T? Result)
+public abstract record ManagedResult(bool Success, List<string> Issues, object ResultObject)
 {
     public bool Fail => !Success;
     public string IssuesTextAggregate => string.Join("\n", Issues);
+};
 
+[DebuggerStepThrough]
+public record ManagedResult<T>(bool Success, List<string> Issues, T? Result) : ManagedResult(Success, Issues, Result) 
+{
     public static ManagedResult<T> Successful(T? result)
     {
         return new ManagedResult<T>(true, new List<string>(), result);
