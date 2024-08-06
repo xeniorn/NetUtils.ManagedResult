@@ -38,7 +38,7 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: ${{ REQUIRED_DOTNET_VERSION }}
+        dotnet-version: ${{ env.REQUIRED_DOTNET_VERSION }}
     # - name: Verify commit exists in origin/develop or origin/main
     #   run: |
     #     git fetch --no-tags --prune --depth=1 origin +refs/heads/*:refs/remotes/origin/*
